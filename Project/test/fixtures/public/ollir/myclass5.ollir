@@ -1,0 +1,40 @@
+myClass {
+    .field a.i32;
+
+	.construct myClass(n.i32).V{
+		invokespecial(this, "<init>").V;
+		putfield(this, a.i32, $1.n.i32).V;
+	}
+
+	.construct myClass().V{
+		invokespecial(this, "<init>").V;
+        putfield(this, a.i32, 3.i32).V;
+	}
+
+	.method public get().i32 {
+	    t1.i32 :=.i32 getfield(this, a.i32).i32;
+	    ret.i32 t1.i32;
+	}
+
+	.method public static main(args.array.String).V {
+		a.myClass :=.myClass new(myClass).myClass;
+        invokespecial(a.myClass, "<init>", 7.i32).V;  // myClass a = new myClass(7);
+		t1.i32 :=.i32 getfield(a.myClass, a.i32).i32;
+		t2.String :=.String ldc("val = ").String;
+        invokestatic(io, "println", t2.String, t1.i32).V;  //io.println("val = ", this.get());
+    }
+
+	.method public assign().V {
+	    t.i32 :=.i32 2.i32;
+	    a.i32 :=.i32 t.i32;
+	}
+
+	.method public sum(A.array.i32).i32 {
+	    t.i32 :=.i32 0.i32;
+        t.i32 :=.i32 0.i32 +.i32 1.i32;
+        t.i32 :=.i32 0.i32 +.i32 t.i32;
+        t.i32 :=.i32 t.i32 +.i32 0.i32;
+        t.i32 :=.i32 t.i32;
+        ret.i32 t.i32;
+	}
+}

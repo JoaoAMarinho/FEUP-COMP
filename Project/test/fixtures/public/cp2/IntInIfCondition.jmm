@@ -1,0 +1,11 @@
+import A;
+
+class Test {
+	public int foo() {
+		if(1+2) {
+		} else {
+		}
+		
+		return 0;
+	}
+}

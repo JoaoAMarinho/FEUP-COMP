@@ -1,0 +1,65 @@
+import ioPlus;
+import BoardBase;
+import java.io.File;
+
+public HelloWorld extends BoardBase {
+    .field private a.i32;
+
+    .construct HelloWorld(n.i32).V {
+        invokespecial(this, "<init>").V;
+        putfield(this, a.i32, $1.n.i32).V;
+    }
+
+    .method public sum().i32 {
+        t1.i32 :=.i32 3.i32;
+        t1.i32 :=.i32 t1.i32 +.i32 2.i32;
+        ret.i32 t1.i32;
+    }
+
+    .method public sub().i32 {
+        t1.i32 :=.i32 3.i32;
+        t1.i32 :=.i32 t1.i32 -.i32 2.i32;
+        ret.i32 t1.i32;
+    }
+
+    .method public mult().i32 {
+        t1.i32 :=.i32 3.i32;
+        t1.i32 :=.i32 t1.i32 *.i32 2.i32;
+        ret.i32 t1.i32;
+    }
+
+    .method public div().i32 {
+        t1.i32 :=.i32 3.i32;
+        t1.i32 :=.i32 t1.i32 /.i32 2.i32;
+        ret.i32 t1.i32;
+    }
+
+	.method public m1().V {
+        t1.i32 :=.i32 getfield(this, a.i32).i32;
+        t2.String :=.String ldc("Hello World!").String;
+		invokestatic(io, "println", t2.String).V;
+        invokestatic(io, "println", t1.i32).V;
+	}
+
+	.method public static main(args.array.String).V {
+	    A.HelloWorld :=.HelloWorld new(HelloWorld).HelloWorld;
+	    invokespecial(A.HelloWorld,"<init>", 2.i32).V;
+	    invokevirtual(A.HelloWorld,"m1").V;
+
+	    sumString.String :=.String ldc("Sum = ").String;
+	    sum.i32 :=.i32 invokevirtual(A.HelloWorld,"sum").i32;
+	    invokestatic(io, "println", sumString.String, sum.i32).V;
+
+	    sub.i32 :=.i32 invokevirtual(A.HelloWorld,"sub").i32;
+	    subString.String :=.String ldc("Sub = ").String;
+	    invokestatic(io, "println", subString.String, sub.i32).V;
+
+	    mult.i32 :=.i32 invokevirtual(A.HelloWorld,"mult").i32;
+	    multString.String :=.String ldc("MULT = ").String;
+	    invokestatic(io, "println", multString.String, mult.i32).V;
+
+	    div.i32 :=.i32 invokevirtual(A.HelloWorld,"div").i32;
+	    divString.String :=.String ldc("DIV = ").String;
+	    invokestatic(io, "println", divString.String, div.i32).V;
+	}
+}

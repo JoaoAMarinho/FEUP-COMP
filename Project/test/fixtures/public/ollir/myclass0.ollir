@@ -1,0 +1,20 @@
+myClass {
+    .field private a.i32;
+	.construct myClass().V{
+		invokespecial(this, "<init>").V;
+	}
+
+	.methodpublic assign().V {
+	    t.i32 :=.i32 2.i32;
+	    a.i32 :=.i32 t.i32;
+	}
+
+	.methodpublic sum(A.array.i32).array.i32 {
+	    t.i32 :=.i32 0.i32;
+        t.i32 :=.i32 0.i32 +.i32 1.i32;
+        t.i32 :=.i32 0.i32 +.i32 t.i32;
+        t.i32 :=.i32 t.i32 +.i32 0.i32;
+        t.i32 :=.i32 t.i32;
+        ret.i32 t1.i32;
+	}
+}

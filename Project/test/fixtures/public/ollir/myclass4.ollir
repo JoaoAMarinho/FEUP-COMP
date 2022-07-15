@@ -1,0 +1,90 @@
+import ioPlus;
+import java.io.File;
+
+myClass {
+	.construct myClass().V {
+		invokespecial(this, "<init>").V;
+	}
+	
+	.method public check(A.array.i32, N.i32, T.i32).bool {
+		i.i32 :=.i32 0.i32;
+		all.bool :=.bool 0.bool;
+		
+		Loop:
+			t1.bool :=.bool i.i32 <.i32 $2.N.i32;
+			t2.i32 :=.i32 $1.A[i.i32].i32;
+			t3.bool :=.bool t2.i32 <.i32 $3.T.i32;
+			if (t1.bool &&.bool t3.bool) goto Body;
+			goto EndLoop;
+		Body:
+			i.i32 :=.i32 i.i32 +.i32 1.i32;
+			goto Loop;
+		EndLoop:
+			if(i.i32 ==.bool $2.N.i32) goto Then;
+			goto End;
+		Then:all.bool :=.bool 1.bool;
+		
+		End:
+			ret.bool all.bool;
+	}
+
+	.method public static testEq().V {
+        t1.i32 :=.i32 1.i32;
+        t2.i32 :=.i32 1.i32;
+        t3.String :=.String ldc("True").String;
+        end.String :=.String ldc("End").String;
+        goto IfCond;
+        TrueCond:
+            invokestatic(io, "println", t3.String).V;
+            t2.i32 :=.i32 2.i32;
+        IfCond:
+            if (t1.i32 ==.bool t2.i32) goto TrueCond;
+        invokestatic(io, "println", end.String).V;
+	}
+
+	.method public static testNotEq().V {
+        t1.i32 :=.i32 1.i32;
+        t2.i32 :=.i32 2.i32;
+        t3.String :=.String ldc("True").String;
+        end.String :=.String ldc("End").String;
+        goto IfCond;
+        TrueCond:
+            invokestatic(io, "println", t3.String).V;
+            t2.i32 :=.i32 t1.i32;
+        IfCond:
+            if (t1.i32 !=.bool t2.i32) goto TrueCond;
+        invokestatic(io, "println", end.String).V;
+    }
+
+    .method public static testNotB().V {
+        t1.i32 :=.i32 1.i32;
+        t2.i32 :=.i32 1.i32;
+        t3.String :=.String ldc("True").String;
+        end.String :=.String ldc("End").String;
+        goto IfCond;
+        TrueCond:
+            invokestatic(io, "println", t3.String).V;
+            t2.i32 :=.i32 2.i32;
+        IfCond:
+            t4.bool :=.bool t1.i32 !=.bool t2.i32;
+            if (!.bool t4.bool) goto TrueCond;
+        invokestatic(io, "println", end.String).V;
+    }
+
+	.method public static testLoop().V {
+	    i.i32 :=.i32 0.i32;
+	    Loop:
+	        if (i.i32 <.bool 3.i32) goto Then;
+	        goto End;
+	    Then:
+            invokestatic(io, "println", i.i32).V;
+            i.i32 :=.i32 i.i32 +.i32 1.i32;
+	        goto Loop;
+        End:
+            ret.V;
+	}
+
+    .method public static main(args.array.String).V {
+        invokestatic(myClass, "testNotB").V;
+    }
+}

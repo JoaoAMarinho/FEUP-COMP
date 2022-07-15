@@ -1,0 +1,24 @@
+    /*
+
+    */
+import io;
+
+class myClass{
+    int a;
+    int[] A;
+
+    public int compFac(int num){
+        int[] C;
+        int i;
+        i = A[num];
+        //C[2+num] = num;
+        return num;
+    }
+
+    public static void main(String[]args){
+        myClass A;
+        String str;
+        str = args[21];
+        A = new myClass();
+    }
+}

@@ -1,0 +1,27 @@
+import B;
+import foo;
+
+class myClass {
+    int[] A;
+    int f;
+
+    public static void main(String[]args){
+        int a;
+        myClass m;
+        int b;
+        int c;
+        a = foo.print(b, 10);
+        c = a;
+        if (a < (a+c)) {
+            a = 4;
+        } else {
+            c = 5;
+        }
+    }
+
+    public int v(){
+       int a;
+       f = a;
+       return a;
+    }
+}

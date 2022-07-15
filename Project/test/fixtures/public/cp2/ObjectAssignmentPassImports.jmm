@@ -1,0 +1,27 @@
+import A;
+import B;
+import C;
+import X;
+
+class Test extends X {
+	
+	public static void main(String[] args) {
+	
+	}
+	
+	public Test foo() {
+		Test a;
+		B b;
+		C c;
+		
+		a = new Test();
+		b = new B();
+		
+		// A and B imported, assume it is correct
+		b = a;
+		a = b;
+		c = b;
+		
+		return a;
+	}
+}
